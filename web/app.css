@@ -5,5 +5,22 @@
 
 body {
   background-color: black;
-  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.word {
+  position: absolute;
+  font-family: 'IM Fell Double Pica', serif;
+  font-size: 100px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: red;
+  transition: all 5s ease-out 0;
+  -webkit-transition: all 5s ease-out 0;
+  -moz-transition: all 5s ease-out 0;
+  -o-transition: all 5s ease-out 0;
+}
+
+.word-end {
+  opacity: 0;
 }

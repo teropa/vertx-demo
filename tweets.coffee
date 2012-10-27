@@ -16,4 +16,4 @@ req = client.post "/1.1/statuses/filter.json", (res) ->
 
 req.putHeader "Content-Type", "application/x-www-form-urlencoded"
 req.putHeader "Authorization", "Basic #{auth}"
-req.end "track=javascript,coffeescript,ruby,python,java"
+req.end "track=dog"
