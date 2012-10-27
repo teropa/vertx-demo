@@ -16,6 +16,8 @@ end
 
 EventBus.register_handler 'tweets' do |tweet|
   filter_interesting(words(tweet.body)).each do |word|
-    EventBus.publish 'tweetWords', word
+    Vertx.set_timer rand(5000) do
+      EventBus.publish 'tweetWords', word
+    end
   end
 end
