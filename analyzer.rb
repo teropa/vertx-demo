@@ -1,5 +1,7 @@
 require "vertx"
 
 Vertx::EventBus.register_handler 'tweets' do |tweet|
-  puts tweet.body
+  tweet.body.downcase.gsub(/\W/, ' ').split.each do |word|
+    Vertx::EventBus.publish 'tweetWords', word
+  end
 end
