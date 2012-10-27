@@ -12,15 +12,10 @@ body {
 .word {
   position: absolute;
   font-family: 'IM Fell Double Pica', serif;
-  font-size: 100px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: red;
-  transition: all 5s ease-out 0;
-  -webkit-transition: all 5s ease-out 0;
-  -moz-transition: all 5s ease-out 0;
-  -o-transition: all 5s ease-out 0;
-}
-
-.word-end {
-  opacity: 0;
+  font-size: 80px;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  transition: all 6s ease-in 0;
+  -webkit-transition: all 6s cubic-bezier(0.95, 0, 1.0, 1.0) 0;
+  -moz-transition: all 6s ease-in 0;
+  -o-transition: all 6s ease-in 0;
 }
