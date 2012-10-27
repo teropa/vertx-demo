@@ -5,7 +5,7 @@ include Vertx
 STOPWORDS = Set.new(FileSystem.read_file_as_buffer_sync('stopwords.txt').to_s.split("\n"))
 
 def words(tweet)
-  tweet.downcase.split.map { |w| w.gsub(/^[\(\"']+/, '').gsub(/[.,:\)\"']+$/, '') }
+  tweet.downcase.split.map { |w| w.gsub(/[^\w\-#\@]+/, '') }
 end
 
 def filter_interesting(words)
