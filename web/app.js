@@ -5,13 +5,8 @@
     , h = document.documentElement.clientHeight
     , centerX = w / 2
     , centerY = h / 2
-    , eb = new vertx.EventBus(loc.protocol + '//' + loc.hostname + ':' + loc.port + '/eventbus');
-
-  // Wait for event bus to connect
-  eb.onopen = function() {
-    
-    // Start listening for words
-    eb.registerHandler('tweetWords', function(message) {
+    , eb = new vertx.EventBus(loc.protocol + '//' + loc.hostname + ':' + loc.port + '/eventbus')
+    , addWord = function(message) {
       var x = Math.round(Math.random() * w) - 200 // Start location, x
         , y = Math.round(Math.random() * h) - 50 // Start location, y
         , startRotation = Math.round(Math.random() * 16) + 352
@@ -41,8 +36,12 @@
       setTimeout(function() {
         document.body.removeChild(text);
       }, 5000);
+    };
 
-    });
+  // Wait for event bus to connect
+  eb.onopen = function() {
+    // Start listening for words
+    eb.registerHandler('tweetWords', _.throttle(addWord, 50));
   }
 
 })();
