@@ -9,8 +9,8 @@
       var x = Math.round(Math.random() * w) - 100 // Start location, x
         , y = - Math.round(Math.random() * h) - 100 // Start location, y
         , opacity = 0.7 + Math.random() * 0.3
-        , startRotation = Math.round(Math.random() * 20) + 350
-        , endRotation = Math.round(Math.random() * 20) + 350
+        , startRotation = Math.round(Math.random() * 40) + 340
+        , endRotation = Math.round(Math.random() * 40) + 340
         , text = document.createElement('div');
 
       // Set initial element attributes and content

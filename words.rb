@@ -10,7 +10,7 @@ end
 
 def filter_interesting(words)
   words.select do |word|
-    word != 'dog' && word.size >= 3 && !STOPWORDS.include?(word) && /^(http|@)/ !~ word
+    word != 'feeling' && word.size >= 3 && !STOPWORDS.include?(word) && /^(http|@)/ !~ word
   end
 end
 
