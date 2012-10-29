@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="reveal.css">
+  <link rel="stylesheet" href="sky.css">
+  <link rel="stylesheet" href="zenburn.css">
+  <style>
+    h1#main-title { margin-bottom: 100px; }
+    li.space { margin-top: 40px; }
+
+    .logos ul {
+      margin-left: 0;
+      clear: both;
+    }
+    .logos li {
+      list-style-type: none;
+      margin-left: -20px;
+      float: left;
+      width: 30%;
+      height: 200px;
+      line-height: 200px;
+      margin: 5px;
+    }
+    .logos img {
+      border: 0 !important;
+      width: 210px;
+    }
+    .logos .small li {
+      width: 100px;
+      margin: 0 auto;
+    }
+    .logos .small img {
+      width: 80px;
+    }
+
+    img.diagram {
+      border-width: 0 !important;
+      box-shadow: none !important;
+      background: none !important;
+    }
+  </style>
+  <title>Vert.x</title>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 id="main-title">Vert.x</h1>
+        <p>@teropa</p>
+        <p>HelsinkiJS October 2012</p>
+      </section>
+      <section>
+        <h2>Vert.x is web scale</h2>
+        <img src="web_scale.jpeg">
+        <br/>
+        <p>Vert.x is a platform for <strong>scalable</strong>, <strong>polyglot</strong>
+           network apps for the <strong>JVM</strong>.</p>
+        <p>You could describe it as <strong>Node.js on steroids</strong>.</p>
+      </section>
+      <section>
+        <h2>ihanhyväreittiopas.fi</h2>
+        <img src="ihanhyva.png">
+      </section>
+      <section>
+        <section class="logos">
+          <h2>Polyglot</h2>
+          <ul>
+            <li>
+              <img src="javascript.png" width="200">
+            </li>
+            <li>
+              <img src="coffeescript.png">
+            </li>
+            <li>
+              <img src="java.gif">
+            </li>
+            <li style="clear: left;">
+              <img src="ruby.png">
+            </li>
+            <li>
+              <img src="groovy.png">
+            </li>
+            <li>
+              <img src="python.png">
+            </li>
+          </ul>
+          <br/> <!-- lol -->
+          <ul class="small">
+            <li>
+              <img src="clojure.png">
+            </li>
+            <li>
+              <img src="scala.png">
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>JavaScript</h3>
+          <pre>
+            <code class="javascript">
+load('vertx.js');
+
+vertx.createHttpServer().requestHandler(function(req) {
+  req.end("Hello, world!");
+}).listen(8080);
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>CoffeeScript</h3>
+          <pre>
+            <code class="coffeescript">
+load 'vertx.js'
+
+vertx.createHttpServer().requestHandler((req) ->
+  req.end "Hello, world!"
+).listen(8080)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>Java</h3>
+          <pre>
+            <code class="java">
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.http.HttpServerRequest;
+import org.vertx.java.deploy.Verticle;
+
+public class Server extends Verticle {
+  public void start() {
+    vertx.createHttpServer().requestHandler(new Handler<HttpServerRequest>() {
+      public void handle(HttpServerRequest req) {
+        req.response.end("Hello, world!");
+      }
+    }).listen(8080);
+  }
+}
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>Ruby</h3>
+          <pre>
+            <code class="ruby">
+require "vertx"
+
+Vertx::HttpServer.new.request_handler do |req|
+  req.response.end "Hello, world!"
+end.listen(8080)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>Groovy</h3>
+          <pre>
+            <code class="groovy">
+vertx.createHttpServer().requestHandler { req ->
+  req.response.end "Hello, world!"
+}.listen(8080)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h2>Polyglot</h2>
+          <h3>Python</h3>
+          <pre>
+            <code class="python">
+import vertx
+
+server = vertx.create_http_server()
+
+@server.request_handler
+def request_handler(req):
+  req.response.end("Hello, world!")
+server.listen(8080)
+            </code>
+          </pre>
+        </section>
+      </section>
+      <section>
+        <h2>Core APIs</h2>
+        Based on Netty and Java NIO
+        <ul style="margin-top: 40px; margin-bottom: 20px;">
+          <li>TCP</li>
+          <li>SSL</li>
+          <li>HTTP, HTTPS</li>
+          <li>WebSockets, SockJS</li>
+          <li>File system</li>
+          <li>Async IO with streams, pumps, buffers.</li>
+        </ul>
+        <br/>
+        + Java, Ruby, JavaScript libs...
+      </section>
+      <section>
+        <h2>Public Module Repo</h2>
+        Community-driven extensions
+        <br/>
+        <ul style="margin-top: 40px; margin-bottom: 20px;">
+          <li>JDBC</li>
+          <li>MongoDB</li>
+          <li>Redis</li>
+          <li>Web server</li>
+          <li>Work queue</li>
+          <li>Socket.IO</li>
+          <li>Mailer</li>
+          <li>Sessions, auth</li>
+        </ul>
+      </section>
+      <section>
+        <img class="diagram" src="v1.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+      </section>
+      <section>
+        <img class="diagram" src="v2.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+      </section>
+      <section>
+        <section>
+          <img class="diagram" src="v3.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+        </section>
+        <section>
+          <img src="mutable_state.jpeg"/>
+        </section>
+      </section>
+      <section>
+        <img class="diagram" src="v4.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+      </section>
+      <section>
+        <img class="diagram" src="v5.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+      </section>
+      <section>
+        <img class="diagram" src="v6.png" style="height: 600px; max-width: 200%; max-height: 200%;">
+      </section>
+      <section>
+        <h2>Code</h2>
+        <img src="programming.gif">
+      </section>
+      <section>
+        <h2>Coordinates</h2>
+        <ul>
+          <li><a href="http://vertx.io/">http://vertx.io/</a></li>
+          <li><a href="http://groups.google.com/group/vertx">http://groups.google.com/group/vertx</a></li>
+          <li><a href="https://github.com/vert-x">https://github.com/vert-x</a></li>
+          <li><a href="irc://freenode.net/vertx">irc://freenode.net/vertx</a></li>
+          <li class="space">Slides <a href="https://teropa.github.com/vertx-demo">https://teropa.github.com/vertx-demo</a></li>
+          <li>Code <a href="https://github.com/teropa">https://github.com/teropa/vertx-demo</a></li>
+          <li>Me <a href="https://twitter.com/teropa">https://twitter.com/teropa</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <script src="head.js"></script>
+  <script src="reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      history: true,
+      dependencies: [
+        {
+          src: 'highlight.js',
+          async: true,
+          callback: function() { window.hljs.initHighlightingOnLoad(); }
+        }
+      ]
+    });
+  </script>
+</body>
+</html>
