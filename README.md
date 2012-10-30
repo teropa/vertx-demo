@@ -3,8 +3,7 @@ An example Vert.x application, used for demoing Vert.x.
 # Prereqs
 
 * JDK 7
-* Vert.x master
-** Follow the [build instructions|https://github.com/vert-x/vert.x/wiki/Build-instructions]
+* Vert.x master. Follow the [build instructions](https://github.com/vert-x/vert.x/wiki/Build-instructions)
 
 
 # Usage
